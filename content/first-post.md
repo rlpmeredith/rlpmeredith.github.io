@@ -1,5 +1,5 @@
 title: First Post On My New Blog
-date: 09-05/2020
+date: 05/09/2020
 author: Robert Meredith
 
 # Hopefully noone will ever read this post!
