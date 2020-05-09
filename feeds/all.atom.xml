@@ -2,12 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Roblpm Blog</title><link href="https://rlpmeredith.github.io/" rel="alternate"></link><link href="https://rlpmeredith.github.io/feeds/all.atom.xml" rel="self"></link><id>https://rlpmeredith.github.io/</id><updated>2020-05-09T00:00:00+00:00</updated><entry><title>First Post On My New Blog</title><link href="https://rlpmeredith.github.io/my-first-blog-post.html" rel="alternate"></link><published>2020-05-09T00:00:00+00:00</published><updated>2020-05-09T00:00:00+00:00</updated><author><name>Robert Meredith</name></author><id>tag:rlpmeredith.github.io,2020-05-09:/my-first-blog-post.html</id><content type="html">&lt;h1&gt;Hopefully no-one will ever read this post!&lt;/h1&gt;
 &lt;p&gt;Hopefully no-one will ever read this as there will be so much content after it...................&lt;/p&gt;</content><category term="Misc"></category></entry><entry><title>Setting Up Pelican On Github Pages</title><link href="https://rlpmeredith.github.io/pelican-on-github.html" rel="alternate"></link><published>2020-05-09T00:00:00+00:00</published><updated>2020-05-09T00:00:00+00:00</updated><author><name>Robert Meredith</name></author><id>tag:rlpmeredith.github.io,2020-05-09:/pelican-on-github.html</id><summary type="html">&lt;h1&gt;Some notes on setting up Pelican on github&lt;/h1&gt;
 &lt;p&gt;So I decided to set up a blog. Not for the first time! We shall see if this survives!&lt;/p&gt;
-&lt;p&gt;Pelican is an Python package that generates static webpages. Docs are [here] (https://docs.getpelican.com/en/stable/index.html)&lt;/p&gt;
-&lt;p&gt;So a few …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Some notes on setting up Pelican on github&lt;/h1&gt;
-&lt;p&gt;So I decided to set up a blog. Not for the first time! We shall see if this survives!&lt;/p&gt;
-&lt;p&gt;Pelican is an Python package that generates static webpages. Docs are [here] (https://docs.getpelican.com/en/stable/index.html)&lt;/p&gt;
+&lt;p&gt;Pelican is an Python package that generates static webpages. Docs are &lt;a href="https://docs.getpelican.com/en/stable/index.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;So a few links I used to set this up:&lt;/p&gt;
-&lt;p&gt;[Blog page from Erik O'Shaughnessy] (https://opensource.com/article/19/5/run-your-blog-github-pages-python)&lt;/p&gt;
-&lt;p&gt;I am using this page to see if that workflow works! Also writing this in Vi. There has to be a better way to write Markdown.....&lt;/p&gt;
-&lt;p&gt;And how do these dates work....................!? Answer is you have ot manually enter today's date?&lt;/p&gt;
-&lt;p&gt;OK seventh attempt!&lt;/p&gt;</content><category term="Misc"></category><category term="pelican"></category><category term="github"></category></entry></feed>
+&lt;p&gt;&lt;a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python"&gt;Blog …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Some notes on setting up Pelican on github&lt;/h1&gt;
+&lt;p&gt;So I decided to set up a blog. Not for the first time! We shall see if this survives!&lt;/p&gt;
+&lt;p&gt;Pelican is an Python package that generates static webpages. Docs are &lt;a href="https://docs.getpelican.com/en/stable/index.html"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So a few links I used to set this up:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python"&gt;Blog page from Erik O'Shaughnessy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some lessons learned:&lt;/p&gt;
+&lt;p&gt;No spaces between [] and () when making links!
+Dates need to be US format? (I will look at this)
+Need to specify URL in both pelicanconf and publish conf
+I set up ssh access to github and then wrote a mini bash cript to automate. Then I can just edit files in content and publish.&lt;/p&gt;</content><category term="Misc"></category><category term="pelican"></category><category term="github"></category></entry></feed>
