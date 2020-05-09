@@ -1,7 +1,8 @@
-title: First Post On My New Blog
-date: 2020/05/09
-category: Misc
-author: Robert Meredith
+Title: First Post On My New Blog
+Author: Robert Meredith
+Date: 2020/05/09
+Category: Misc
+Slug: my-first-blog-post
 
 # Hopefully no-one will ever read this post!
 
