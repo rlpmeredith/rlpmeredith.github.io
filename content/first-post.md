@@ -1,8 +1,6 @@
 title: First Post On My New Blog
-date: 05/09/2020
-
+date: 2020/05/09
 category: Misc
-
 author: Robert Meredith
 
 # Hopefully no-one will ever read this post!
