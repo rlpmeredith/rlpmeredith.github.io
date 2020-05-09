@@ -37,13 +37,41 @@
 </footer><!-- /.post-info -->      <h1>Some notes on setting up Pelican on github</h1>
 <p>So I decided to set up a blog. Not for the first time! We shall see if this survives!</p>
 <p>Pelican is an Python package that generates static webpages. Docs are <a href="https://docs.getpelican.com/en/stable/index.html">here</a></p>
-<p>So a few links I used to set this up:</p>
+<p>So I used instructions from this link to set this up:</p>
 <p><a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Blog page from Erik O'Shaughnessy</a></p>
 <p>Some lessons learned:</p>
-<p>No spaces between [] and () when making links!
-Dates need to be US format? (I will look at this)
-Need to specify URL in both pelicanconf and publish conf
-I set up ssh access to github and then wrote a mini bash cript to automate. Then I can just edit files in content and publish.</p>
+<p>No spaces between [] and () when making links! 
+Dates need to be US format? (I will look at this) 
+Need to specify URL in both pelicanconf and publish conf<br>
+Two spaces at the end of a line in markdown for a new line!<br>
+I set up ssh access to github and then wrote a mini bash script to automate. Then I can just edit files in content and publish.</p>
+<p>Script looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/projects/my_static_blog&quot;</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Wrong Directory&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="nv">$HOME</span>/venvs/my_static_blog <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Wrong environment&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> !<span class="o">=</span> <span class="m">1</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;No arguments supplied - Useage is publish_robblog -&#39;Commit Comment&#39;&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+pelican content -o output -s publishconf.py
+ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> --no-jekyll -b master output
+git push origin master
+git add content
+git commit -m <span class="nv">$1</span>
+git push origin content
+</code></pre></div>
     </div><!-- /.entry-content -->
 
   </article>
