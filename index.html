@@ -18,32 +18,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://rlpmeredith.github.io/my-first-blog-post.html">First Post On My New Blog</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2020-05-09T00:00:00+00:00">
-                Published: Sat 09 May 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://rlpmeredith.github.io/author/robert-meredith.html">Robert Meredith</a>
-        </address>
-<p>In <a href="https://rlpmeredith.github.io/category/misc.html">Misc</a>.</p>
-
-</footer><!-- /.post-info --><h1>Hopefully no-one will ever read this post!</h1>
-<p>Hopefully no-one will ever read this as there will be so much content after it...................</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://rlpmeredith.github.io/pelican-on-github.html" rel="bookmark"
-                           title="Permalink to Setting Up Pelican On Github Pages">Setting Up Pelican On Github Pages</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="https://rlpmeredith.github.io/pelican-on-github.html">Setting Up Pelican On Github Pages</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2020-05-09T00:00:00+00:00">
                 Published: Sat 09 May 2020
@@ -54,15 +29,45 @@
         </address>
 <p>In <a href="https://rlpmeredith.github.io/category/misc.html">Misc</a>.</p>
 <p>tags: <a href="https://rlpmeredith.github.io/tag/pelican.html">pelican</a> <a href="https://rlpmeredith.github.io/tag/github.html">github</a> </p>
-</footer><!-- /.post-info -->                <h1>Some notes on setting up Pelican on github</h1>
+</footer><!-- /.post-info --><h1>Some notes on setting up Pelican on github</h1>
 <p>So I decided to set up a blog. Not for the first time! We shall see if this survives!</p>
 <p>Pelican is an Python package that generates static webpages. Docs are <a href="https://docs.getpelican.com/en/stable/index.html">here</a></p>
-<p>So I used instructions from this link to set this up …</p>
-                <a class="readmore" href="https://rlpmeredith.github.io/pelican-on-github.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+<p>So I used instructions from this link to set this up:</p>
+<p><a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Blog page from Erik O'Shaughnessy</a></p>
+<p>Some lessons learned:</p>
+<p>No spaces between [] and () when making links! 
+Dates need to be US format? (I will look at this) 
+Need to specify URL in both pelicanconf and publish conf<br>
+Two spaces at the end of a line in markdown for a new line!<br>
+I set up ssh access to github and then wrote a mini bash script to automate. Then I can just edit files in content and publish.</p>
+<p>Script looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/projects/my_static_blog&quot;</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Wrong Directory&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="nv">$HOME</span>/venvs/my_static_blog <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Wrong environment&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> !<span class="o">=</span> <span class="m">1</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;No arguments supplied - Useage is publish_robblog -&#39;Commit Comment&#39;&quot;</span>
+  <span class="nb">exit</span>
+<span class="k">fi</span>
+
+pelican content -o output -s publishconf.py
+ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> --no-jekyll -b master output
+git push origin master
+git add content
+git commit -m <span class="nv">$1</span>
+git push origin content
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
