@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Python Unittest Cheatsheet</title>
+        <link rel="stylesheet" href="https://rlpmeredith.github.io/theme/css/main.css" />
+        <link href="https://rlpmeredith.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Rob's Python and Data Science Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://rlpmeredith.github.io/">Rob's Python and Data Science Blog </a></h1>
+                <nav><ul>
+                    <li><a href="https://rlpmeredith.github.io/pages/about.html">About</a></li>
+                    <li><a href="https://rlpmeredith.github.io/category/misc.html">Misc</a></li>
+                    <li class="active"><a href="https://rlpmeredith.github.io/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://rlpmeredith.github.io/python-unittest.html" rel="bookmark"
+           title="Permalink to Python Unittest Cheatsheet">Python Unittest Cheatsheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-05-17T00:00:00+00:00">
+                Published: Sun 17 May 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://rlpmeredith.github.io/author/robert-meredith.html">Robert Meredith</a>
+        </address>
+<p>In <a href="https://rlpmeredith.github.io/category/python.html">Python</a>.</p>
+<p>tags: <a href="https://rlpmeredith.github.io/tag/python.html">python</a> <a href="https://rlpmeredith.github.io/tag/unittest.html">unittest</a> </p>
+</footer><!-- /.post-info -->      <p>As I can never remember the syntax here is an aide de memoire for Python's unittest module.</p>
+<p>So we need to import the module:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+</code></pre></div>
+
+
+<p>Then we need a test class that imports from the TestCase class:</p>
+<div class="highlight"><pre><span></span><code><span class="err">class MyTest(unittest.TestCase):</span>
+</code></pre></div>
+
+
+<p>We need to call the test by changing the command line entry point:</p>
+<div class="highlight"><pre><span></span><code><span class="err">if __name__ == &#39;__main__&#39;:</span>
+<span class="err">    unittest.main()</span>
+</code></pre></div>
+
+
+<p>And then we need to create some methods for the class to create the tests making sure that the method name starts with "test":</p>
+<div class="highlight"><pre><span></span><code><span class="err">    def test_sum(self):</span>
+<span class="err">        self.assert(my_function([1,2,3]), answer, &quot;Should be answer&quot;)</span>
+</code></pre></div>
+
+
+<p>Putting it all together to test an example function looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">def</span> <span class="nf">add_it_up</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">add_it_up</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Should be 6&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>There's a great tutorial at <a href="https://realpython.com/python-testing/">Real Python</a> which has information on how to split out the tests from the code and structure the tests in a real project.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://rlpmeredith.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
