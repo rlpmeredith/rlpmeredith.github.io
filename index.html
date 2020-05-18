@@ -13,12 +13,62 @@
                 <nav><ul>
                     <li><a href="https://rlpmeredith.github.io/pages/about.html">About</a></li>
                     <li><a href="https://rlpmeredith.github.io/category/misc.html">Misc</a></li>
+                    <li><a href="https://rlpmeredith.github.io/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://rlpmeredith.github.io/pelican-on-github.html">Setting Up Pelican On Github Pages</a></h1>
+                    <h1 class="entry-title"><a href="https://rlpmeredith.github.io/python-speed-numba.html">Python Speedup With Numba</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2020-05-17T00:00:00+00:00">
+                Published: Sun 17 May 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://rlpmeredith.github.io/author/robert-meredith.html">Robert Meredith</a>
+        </address>
+<p>In <a href="https://rlpmeredith.github.io/category/python.html">Python</a>.</p>
+<p>tags: <a href="https://rlpmeredith.github.io/tag/python.html">python</a> <a href="https://rlpmeredith.github.io/tag/numba.html">numba</a> </p>
+</footer><!-- /.post-info --><h1>Python Speedup With Numba</h1>
+<p>Watched an interesting talk from the Virtual Pycon 2020 entitled "Why Is Python So Slow" given by Anthony Shaw.</p>
+<p>Youtube video is <a href="https://www.youtube.com/watch?v=I4nkgJdVZFA">here</a> </p>
+<p>So it turns out that as with all these type of statements the real answer about Python speed is that it depends what you are doing..................</p>
+<p>So one thing Python is really bad at is tight loops because of the way the code is compiled. So I thought I would have a quick experiment with one of the packages mentioned in the talk.</p>
+<p>Numba is a "Just In Time" compiler which "translates Python functions to optimized machine code at runtime using the industry-standard <a href="https://llvm.org/">LLVM</a> compiler library. Numba-compiled numerical algorithms in Python can approach the speeds of C or FORTRAN. You don't need to replace the Python  interpreter, run a separate compilation step, or even have a C/C++ compiler installed. Just apply one of the  Numba decorators to your Python function, and Numba does the rest. (http://numba.pydata.org).</p>
+<p>I wrote a very quick script to do a couple of trivial maths operations and ran it 100 million times. My slow workstation took 16 seconds to run it.</p>
+<p>To install numba is just a pip install. To use it is just two lines of code. An import and a decorator as you can see below.</p>
+<p>The results were impressive. My trivial programme now ran in 0.2 seconds. </p>
+<p>An interesting quick project and definitely one to remember for the future. Another package that was suggested in the talk that may have the same results was pypy.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+
+
+<span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_some_sums</span><span class="p">(</span><span class="n">how_many</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">how_many</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">2.3</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">i</span>
+
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">do_some_sums</span><span class="p">(</span><span class="mi">100000000</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://rlpmeredith.github.io/pelican-on-github.html" rel="bookmark"
+                           title="Permalink to Setting Up Pelican On Github Pages">Setting Up Pelican On Github Pages</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2020-05-09T00:00:00+00:00">
                 Published: Sat 09 May 2020
@@ -29,45 +79,15 @@
         </address>
 <p>In <a href="https://rlpmeredith.github.io/category/misc.html">Misc</a>.</p>
 <p>tags: <a href="https://rlpmeredith.github.io/tag/pelican.html">pelican</a> <a href="https://rlpmeredith.github.io/tag/github.html">github</a> </p>
-</footer><!-- /.post-info --><h1>Some notes on setting up Pelican on github</h1>
+</footer><!-- /.post-info -->                <h1>Some notes on setting up Pelican on github</h1>
 <p>So I decided to set up a blog. Not for the first time! We shall see if this survives!</p>
 <p>Pelican is an Python package that generates static webpages. Docs are <a href="https://docs.getpelican.com/en/stable/index.html">here</a></p>
-<p>So I used instructions from this link to set this up:</p>
-<p><a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Blog page from Erik O'Shaughnessy</a></p>
-<p>Some lessons learned:</p>
-<p>No spaces between [] and () when making links! 
-Dates need to be US format? (I will look at this) 
-Need to specify URL in both pelicanconf and publish conf<br>
-Two spaces at the end of a line in markdown for a new line!<br>
-I set up ssh access to github and then wrote a mini bash script to automate. Then I can just edit files in content and publish.</p>
-<p>Script looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/projects/my_static_blog&quot;</span> <span class="o">]</span>
-<span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">&quot;Wrong Directory&quot;</span>
-  <span class="nb">exit</span>
-<span class="k">fi</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="nv">$HOME</span>/venvs/my_static_blog <span class="o">]</span>
-<span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">&quot;Wrong environment&quot;</span>
-  <span class="nb">exit</span>
-<span class="k">fi</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> !<span class="o">=</span> <span class="m">1</span> <span class="o">]</span>
-<span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">&quot;No arguments supplied - Useage is publish_robblog -&#39;Commit Comment&#39;&quot;</span>
-  <span class="nb">exit</span>
-<span class="k">fi</span>
-
-pelican content -o output -s publishconf.py
-ghp-import -m <span class="s2">&quot;Generate Pelican site&quot;</span> --no-jekyll -b master output
-git push origin master
-git add content
-git commit -m <span class="nv">$1</span>
-git push origin content
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
+<p>So I used instructions from this link to set this up …</p>
+                <a class="readmore" href="https://rlpmeredith.github.io/pelican-on-github.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Roblpm Blog - Python</title><link href="https://rlpmeredith.github.io/" rel="alternate"></link><link href="https://rlpmeredith.github.io/feeds/python.atom.xml" rel="self"></link><id>https://rlpmeredith.github.io/</id><updated>2020-05-17T00:00:00+00:00</updated><entry><title>Python Speedup With Numba</title><link href="https://rlpmeredith.github.io/python-speed-numba.html" rel="alternate"></link><published>2020-05-17T00:00:00+00:00</published><updated>2020-05-17T00:00:00+00:00</updated><author><name>Robert Meredith</name></author><id>tag:rlpmeredith.github.io,2020-05-17:/python-speed-numba.html</id><summary type="html">&lt;h1&gt;Python Speedup With Numba&lt;/h1&gt;
+&lt;p&gt;Watched an interesting talk from the Virtual Pycon 2020 entitled "Why Is Python So Slow" given by Anthony Shaw.&lt;/p&gt;
+&lt;p&gt;Youtube video is &lt;a href="https://www.youtube.com/watch?v=I4nkgJdVZFA"&gt;here&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;So it turns out that as with all these type of statements the real answer about Python speed is that it depends what …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Python Speedup With Numba&lt;/h1&gt;
+&lt;p&gt;Watched an interesting talk from the Virtual Pycon 2020 entitled "Why Is Python So Slow" given by Anthony Shaw.&lt;/p&gt;
+&lt;p&gt;Youtube video is &lt;a href="https://www.youtube.com/watch?v=I4nkgJdVZFA"&gt;here&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;So it turns out that as with all these type of statements the real answer about Python speed is that it depends what you are doing..................&lt;/p&gt;
+&lt;p&gt;So one thing Python is really bad at is tight loops because of the way the code is compiled. So I thought I would have a quick experiment with one of the packages mentioned in the talk.&lt;/p&gt;
+&lt;p&gt;Numba is a "Just In Time" compiler which "translates Python functions to optimized machine code at runtime using the industry-standard &lt;a href="https://llvm.org/"&gt;LLVM&lt;/a&gt; compiler library. Numba-compiled numerical algorithms in Python can approach the speeds of C or FORTRAN. You don't need to replace the Python  interpreter, run a separate compilation step, or even have a C/C++ compiler installed. Just apply one of the  Numba decorators to your Python function, and Numba does the rest. (http://numba.pydata.org).&lt;/p&gt;
+&lt;p&gt;I wrote a very quick script to do a couple of trivial maths operations and ran it 100 million times. My slow workstation took 16 seconds to run it.&lt;/p&gt;
+&lt;p&gt;To install numba is just a pip install. To use it is just two lines of code. An import and a decorator as you can see below.&lt;/p&gt;
+&lt;p&gt;The results were impressive. My trivial programme now ran in 0.2 seconds. &lt;/p&gt;
+&lt;p&gt;An interesting quick project and definitely one to remember for the future. Another package that was suggested in the talk that may have the same results was pypy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numba&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;jit&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@jit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nopython&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;do_some_sums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;how_many&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;how_many&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mf"&gt;2.3&lt;/span&gt;
+        &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+
+
+&lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;do_some_sums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100000000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category><category term="python"></category><category term="numba"></category></entry></feed>
