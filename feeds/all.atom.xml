@@ -29,30 +29,35 @@
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category><category term="python"></category><category term="numba"></category></entry><entry><title>Python Unittest Cheatsheet</title><link href="https://rlpmeredith.github.io/python-unittest.html" rel="alternate"></link><published>2020-05-17T00:00:00+00:00</published><updated>2020-05-17T00:00:00+00:00</updated><author><name>Robert Meredith</name></author><id>tag:rlpmeredith.github.io,2020-05-17:/python-unittest.html</id><summary type="html">&lt;p&gt;As I can never remember the syntax here is an aide de memoire for Python's unittest module.&lt;/p&gt;
 &lt;p&gt;So we need to import the module:&lt;/p&gt;
-&lt;p&gt;​   :::python&lt;/p&gt;
-&lt;p&gt;​   import unittest&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Then we need a test class that imports from the TestCase class:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;We need to call the test by …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As I can never remember the syntax here is an aide de memoire for Python's unittest module.&lt;/p&gt;
+&lt;p&gt;We need to call the test by changing …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As I can never remember the syntax here is an aide de memoire for Python's unittest module.&lt;/p&gt;
 &lt;p&gt;So we need to import the module:&lt;/p&gt;
-&lt;p&gt;​   :::python&lt;/p&gt;
-&lt;p&gt;​   import unittest&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Then we need a test class that imports from the TestCase class:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We need to call the test by changing the command line entry point:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;if __name__ == &amp;#39;__main__&amp;#39;:&lt;/span&gt;
-&lt;span class="err"&gt;    unittest.main()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And then we need to create some methods for the class to create the tests making sure that the method name starts with "test":&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    def test_sum(self):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    :::python&lt;/span&gt;
+&lt;span class="err"&gt;    def test_sum(self):&lt;/span&gt;
 &lt;span class="err"&gt;        self.assert(my_function([1,2,3]), answer, &amp;quot;Should be answer&amp;quot;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 

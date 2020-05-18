@@ -37,21 +37,24 @@
 <p>tags: <a href="https://rlpmeredith.github.io/tag/python.html">python</a> <a href="https://rlpmeredith.github.io/tag/unittest.html">unittest</a> </p>
 </footer><!-- /.post-info -->      <p>As I can never remember the syntax here is an aide de memoire for Python's unittest module.</p>
 <p>So we need to import the module:</p>
-<p>​   :::python</p>
-<p>​   import unittest</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">unittest</span>
+</code></pre></div>
+
+
 <p>Then we need a test class that imports from the TestCase class:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 </code></pre></div>
 
 
 <p>We need to call the test by changing the command line entry point:</p>
-<div class="highlight"><pre><span></span><code><span class="err">if __name__ == &#39;__main__&#39;:</span>
-<span class="err">    unittest.main()</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 
 
 <p>And then we need to create some methods for the class to create the tests making sure that the method name starts with "test":</p>
-<div class="highlight"><pre><span></span><code><span class="err">    def test_sum(self):</span>
+<div class="highlight"><pre><span></span><code><span class="err">    :::python</span>
+<span class="err">    def test_sum(self):</span>
 <span class="err">        self.assert(my_function([1,2,3]), answer, &quot;Should be answer&quot;)</span>
 </code></pre></div>
 
